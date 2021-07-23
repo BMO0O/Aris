@@ -1,0 +1,20 @@
+15:15:25 **** Incremental Build of configuration Debug for project Gripper X ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I"C:/Users/Loungelab/Documents/Gripper_X/Gripper_X/Gripper X/Middlewares/Third_Party/MODBUS-LIB/Inc" -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/freertos.o"
+arm-none-eabi-gcc -o "Gripper X.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Loungelab\Documents\Gripper_X\Gripper_X\Gripper X\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Gripper X.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Gripper X.elf
+ 
+arm-none-eabi-objdump -h -S  Gripper\ X.elf  > "Gripper X.list"
+arm-none-eabi-objcopy  -O binary  Gripper\ X.elf  "Gripper X.bin"
+arm-none-eabi-size   Gripper\ X.elf 
+   text	   data	    bss	    dec	    hex	filename
+  40212	     24	  11688	  51924	   cad4	Gripper X.elf
+Finished building: default.size.stdout
+ 
+Finished building: Gripper X.bin
+ 
+Finished building: Gripper X.list
+ 
+
+15:15:26 Build Finished. 0 errors, 0 warnings. (took 1s.64ms)
+

@@ -1,0 +1,58 @@
+14:56:17 **** Incremental Build of configuration Debug for project Aris_test ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function '_write':
+../Core/Src/main.c:57:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart1, p, len, 10);
+                             ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:337:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:700:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:103:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+   HAL_ADC_Start_DMA(&hadc1, &adcCurrent, 1);
+                             ^
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:273:0,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h:929:25: note: expected 'uint32_t * {aka long unsigned int *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef       HAL_ADC_Start_DMA(ADC_HandleTypeDef* hadc, uint32_t* pData, uint32_t Length);
+                         ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:115:12: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+    sprintf(buffer, "%d,%d \r\n", adcCurrent, Amp);
+            ^~~~~~
+In file included from ../Core/Src/main.c:29:0:
+c:\st\stm32cubeide_1.5.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924\tools\arm-none-eabi\include\stdio.h:244:5: note: expected 'char * restrict' but argument is of type 'uint8_t * {aka unsigned char *}'
+ int sprintf (char *__restrict, const char *__restrict, ...)
+     ^~~~~~~
+../Core/Src/main.c:116:39: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+    HAL_UART_Transmit(&huart1, buffer, strlen(buffer), 10);
+                                       ^~~~~~
+../Core/Src/main.c:116:39: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/main.c:116:39: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:116:46: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+    HAL_UART_Transmit(&huart1, buffer, strlen(buffer), 10);
+                                              ^~~~~~
+../Core/Src/main.c:116:46: note: expected 'const char *' but argument is of type 'uint8_t * {aka unsigned char *}'
+arm-none-eabi-gcc -o "Aris_test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Loungelab\Documents\Aris\Aris_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Aris_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Aris_test.elf
+ 
+arm-none-eabi-objdump -h -S  Aris_test.elf  > "Aris_test.list"
+arm-none-eabi-objcopy  -O binary  Aris_test.elf  "Aris_test.bin"
+arm-none-eabi-size   Aris_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14908	    120	   2032	  17060	   42a4	Aris_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Aris_test.bin
+ 
+Finished building: Aris_test.list
+ 
+
+14:56:18 Build Finished. 0 errors, 6 warnings. (took 1s.10ms)
+
